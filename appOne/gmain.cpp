@@ -1,3 +1,4 @@
+#if 1
 #include "libOne.h"
 #include "gmain.h"
 
@@ -61,8 +62,120 @@ struct DATA {
     int RESULT = 2;
     int state = TITLE;
     //RESULTの時、キー入力を無効化するフレーム数
-    int frameRestrictInput = 90;
-    int frameCnt = 0;
+    int frameRestrictInput;
+    int frameCnt;
+};
+
+//関数の呼び出し構造
+//・loadImages()
+//・title()
+//    init()
+//・play()
+//    collision()
+//    draw()
+//      hpGauge()
+//・result()
+//    draw()
+//      hpGauge();
+void loadImages(struct DATA* d) {
+}
+void title(struct DATA* d){
+}
+void init(struct DATA* d){
+}
+void play(struct DATA* d){
+}
+int collision(struct CHARA* c, struct BULLET* b){
+}
+void draw(struct DATA* d){
+}
+void hpGauge(struct CHARA* c){
+}
+void result(struct DATA* d){
+}
+
+void gmain(){
+    window(300, 480, full);
+    //全データ
+    struct DATA d;
+    //全画像読み込み
+    loadImages(&d);
+    ShowCursor(false);
+    while (notQuit) {
+        //ゲームステート制御
+        if      (d.state == d.TITLE ) { title(&d); }
+        else if (d.state == d.PLAY  ) { play(&d); }
+        else if (d.state == d.RESULT) { result(&d); }
+    }
+    ShowCursor(true);
+}
+
+#else
+#include "libOne.h"
+#include "gmain.h"
+
+//ウサギとゴリラ用構造体型
+struct CHARA {
+    //各画像番号
+    int normalImg;
+    int damageImg;
+    int loseImg;
+    int winImg;
+    //現在の画像番号
+    int img;
+    //位置
+    float px;
+    float py;
+    //移動方向ベクトル
+    float vx;
+    float vy;
+    //体力
+    int hp;
+    //ＨＰゲージ用画像番号
+    int hpGaugeImg;
+    //ＨＰゲージ表示オフセット位置
+    float hpGaugeOfsY;
+    //当たり判定用、半分の幅と高さ
+    float halfW;
+    float halfH;
+    //弾発射オフセット位置
+    float bulletOfsY;
+};
+//にんじんとうんこ用構造体型
+struct BULLET {
+    //画像番号
+    int img;
+    //位置
+    float px;
+    float py;
+    //方向ベクトル
+    float vx;
+    float vy;
+    //体力？（ウィンドウ内を飛んでいるかを意味する）
+    int hp;
+    //当たり判定用、半分の幅と高さ
+    float halfW;
+    float halfH;
+};
+//全データを管理する構造体型
+struct DATA {
+    //----------------------------------------
+    //キャラクタデータ
+    struct CHARA rabit;
+    struct CHARA gori;
+    struct BULLET ninjin;
+    struct BULLET unko;
+    int titleImg;
+    int backImg;
+    //----------------------------------------
+    //ステート制御用データ
+    int TITLE = 0;
+    int PLAY = 1;
+    int RESULT = 2;
+    int state = TITLE;
+    //RESULTの時、キー入力を無効化するフレーム数
+    int frameRestrictInput;
+    int frameCnt;
 };
 
 //関数の呼び出し構造
@@ -143,6 +256,8 @@ void init(struct DATA* d) {
     d->unko.halfH = 16;
     d->ninjin.halfW = 10;
     d->ninjin.halfH = 16;
+
+    d->frameRestrictInput = 90;
 }
 void play(struct DATA* d) {
     
@@ -315,15 +430,16 @@ void result(struct DATA* d) {
     }
     //描画
     draw(d);
-    //リスタート
+
+    //リスタート(数フレームループしないとスペースキーを押せない)
     if (d->frameCnt > 0) {
         d->frameCnt--;
     }
     else {
         text("Spaceでタイトルに戻ります", 25, height);
-    }
-    if (d->frameCnt <= 0 && isTrigger(KEY_SPACE)) {
-        d->state = d->TITLE;
+        if (isTrigger(KEY_SPACE)) {
+            d->state = d->TITLE;
+        }
     }
 }
 
@@ -342,3 +458,4 @@ void gmain() {
     }
     ShowCursor(true);
 }
+#endif
