@@ -100,14 +100,12 @@ void gmain(){
     struct DATA d;
     //全画像読み込み
     loadImages(&d);
-    ShowCursor(false);
     while (notQuit) {
         //ゲームステート制御
         if      (d.state == d.TITLE ) { title(&d); }
         else if (d.state == d.PLAY  ) { play(&d); }
         else if (d.state == d.RESULT) { result(&d); }
     }
-    ShowCursor(true);
 }
 
 #else
