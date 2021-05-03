@@ -1,5 +1,5 @@
 #pragma once
-void loadImages(struct DATA* d);
+void loading(struct DATA* d);
 void title(struct DATA* d);
 void init(struct DATA* d);
 void play(struct DATA* d);

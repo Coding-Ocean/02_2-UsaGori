@@ -1,91 +1,123 @@
-#if 1
+ï»¿#if 0 //â†0ã‚’1ã«å¤‰ãˆã¦ä½œã‚Šå§‹ã‚ã‚ˆã†ï¼
+
+/*---------------------------------------------------------
+åˆ¶ä½œæ‰‹é †
+â“ªå…¨ä½“ã®éª¨çµ„ã¿ã€æ§‹é€ ä½“å‹ã®ãƒ‡ãƒ¼ã‚¿å†…å®¹ã‚’èª­ã¿å–ã£ã¦ãŠã
+  gmain()ã®ä¸­èº«ã€‚drawã¯playã¨resultãã‚Œãã‚Œã§å‘¼ã³å‡ºã™ã‚ˆã†ã«ã™ã‚‹ã€‚
+  title()ã§ã—ã¦ã„ã‚‹ã“ã¨ã¯ä½•ã‹ã€‚
+  ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«ã¯ã©ã“ã«ã‚ã‚‹ã®ã‹ã€‚
+  ãƒ•ã‚¡ã‚¤ãƒ«åã¯ï¼Ÿ ç”»åƒã‚µã‚¤ã‚ºã¯ï¼Ÿ ä¸‹ã®å‹•ç”»ã‚’å‚è€ƒã«ã—ã‚ˆã†ã€‚
+  https://youtu.be/ZExz4iMFXfE â†ctrlã‚’æŠ¼ã—ãªãŒã‚‰ã“ã“ã‚’ã‚¯ãƒªãƒƒã‚¯ã§å†ç”Ÿ
+â‘ ã‚¦ã‚µã‚®ã‚’rectMode(CENTER)ã§è¡¨ç¤ºã—ã¦ã‹ã‚‰ã€
+  ã‚­ãƒ¼æ“ä½œã§ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®å¤–ã«å‡ºãªã„ã‚ˆã†ã«ã™ã‚‹
+â‘¡SPACEã‚­ãƒ¼ãŒæŠ¼ã•ã‚ŒãŸç¬é–“ã€ã‚¦ã‚µã‚®ãŒãƒ‹ãƒ³ã‚¸ãƒ³ã‚’ç™ºå°„ã€‚
+ã€€ãã®å¾Œã€ã†ã‚“ã“ã‚’ç§»å‹•ã€æç”»ã™ã‚‹ã€‚
+  https://youtu.be/l6tC2mFwefI 
+â‘¢ã‚´ãƒªãƒ©ã‚’å·¦å³ã«å‹•ã‹ã™
+  å‚è€ƒå‹•ç”»ã¯javascriptã ã‘ã©ã€ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã¯åŒã˜
+  https://youtu.be/pwEkpPuhtRU
+  (siné–¢æ•°ã‚’ä½¿ã£ã¦pxã‚’æ±‚ã‚ã‚Œã°ã€æ»‘ã‚‰ã‹ã«å‹•ã‹ã™ã“ã¨ã‚‚å¯èƒ½)
+â‘£ã†ã‚“ã“ã®HPãŒ0ã®æ™‚ã€ã‚´ãƒªãƒ©ã«ã†ã‚“ã“ã•ã›ã‚‹
+â‘¤å½“ãŸã‚Šåˆ¤å®šï½ã‚„ã‚‰ã‚Œç”»åƒã¸ã®åˆ‡ã‚Šæ›¿ãˆã€‚ä¸‹ã®å‹•ç”»ã‚’å‚è€ƒã«ä½œã‚‹ã€‚
+ã€€ãŸã ã—ã€ä»Šå› px,pyã¯ç”»åƒã®ä¸­å¿ƒåº§æ¨™ã§ã‚ã‚‹ã“ã¨ã«æ³¨æ„ï¼
+  halfW,halfHã‚’ã†ã¾ãä½¿ãŠã†ã€‚
+  https://youtu.be/IT-_DmXivjQ
+â‘¥HPãƒãƒ¼ã®è¡¨ç¤º
+  rectã‚’ä½¿ãŠã†ã€‚strokeWeight(0)ã«ã—ã¦è¼ªéƒ­è¡¨ç¤ºã‚’ã—ãªã„ã€‚
+â‘¦å‹æ•—åˆ¤å®šã—ã€resultã¸ã€‚ãƒªãƒ—ãƒ¬ã‚¤ã®å‡¦ç†ã€‚
+â‘§ã‚¿ã‚¤ãƒˆãƒ«ç”»é¢ã®è¡¨ç¤ºã€‚
+---------------------------------------------------------*/
 #include "libOne.h"
 #include "gmain.h"
 
-//ƒEƒTƒM‚ÆƒSƒŠƒ‰—p\‘¢‘ÌŒ^
+//ã‚¦ã‚µã‚®ã¨ã‚´ãƒªãƒ©ç”¨æ§‹é€ ä½“å‹
 struct CHARA {
-    //Še‰æ‘œ”Ô†
+    //å„ç”»åƒç•ªå·
     int normalImg;
     int damageImg;
     int loseImg;
     int winImg;
-    //Œ»İ‚Ì‰æ‘œ”Ô†
+    //ç¾åœ¨ã®ç”»åƒç•ªå·
     int img;
-    //ˆÊ’u
+    //ä½ç½®
     float px;
     float py;
-    //ˆÚ“®•ûŒüƒxƒNƒgƒ‹
+    //ç§»å‹•æ–¹å‘ãƒ™ã‚¯ãƒˆãƒ«
     float vx;
     float vy;
-    //‘Ì—Í
+    //å¼¾ç™ºå°„ã‚ªãƒ•ã‚»ãƒƒãƒˆä½ç½®
+    float bulletOfsY;//pyã«ã“ã®å€¤ã‚’åŠ ç®—ã—ãŸå€¤ã‚’ç™ºå°„ä½ç½®ã¨ã™ã‚‹
+    //ä½“åŠ›
     int hp;
-    //‚g‚oƒQ[ƒW—p‰æ‘œ”Ô†
+    //ï¼¨ï¼°ã‚²ãƒ¼ã‚¸ç”¨ç”»åƒç•ªå·
     int hpGaugeImg;
-    //‚g‚oƒQ[ƒW•\¦ƒIƒtƒZƒbƒgˆÊ’u
+    //ï¼¨ï¼°ã‚²ãƒ¼ã‚¸è¡¨ç¤ºã‚ªãƒ•ã‚»ãƒƒãƒˆä½ç½®
     float hpGaugeOfsY;
-    //“–‚½‚è”»’è—pA”¼•ª‚Ì•‚Æ‚‚³
+    //å½“ãŸã‚Šåˆ¤å®šç”¨ã€åŠåˆ†ã®å¹…ã¨é«˜ã•
     float halfW;
     float halfH;
-    //’e”­ËƒIƒtƒZƒbƒgˆÊ’u
-    float bulletOfsY;
 };
-//‚É‚ñ‚¶‚ñ‚Æ‚¤‚ñ‚±—p\‘¢‘ÌŒ^
+//ã«ã‚“ã˜ã‚“ã¨ã†ã‚“ã“ç”¨æ§‹é€ ä½“å‹
 struct BULLET {
-    //‰æ‘œ”Ô†
+    //ç”»åƒç•ªå·
     int img;
-    //ˆÊ’u
+    //ä½ç½®
     float px;
     float py;
-    //•ûŒüƒxƒNƒgƒ‹
+    //ç§»å‹•æ–¹å‘ãƒ™ã‚¯ãƒˆãƒ«
     float vx;
     float vy;
-    //‘Ì—ÍHiƒEƒBƒ“ƒhƒE“à‚ğ”ò‚ñ‚Å‚¢‚é‚©‚ğˆÓ–¡‚·‚éj
+    //ä½“åŠ›ï¼Ÿï¼ˆã‚¦ã‚£ãƒ³ãƒ‰ã‚¦å†…ã‚’é£›ã‚“ã§ã„ã‚‹ã‹ã‚’æ„å‘³ã™ã‚‹ï¼‰
     int hp;
-    //“–‚½‚è”»’è—pA”¼•ª‚Ì•‚Æ‚‚³
+    //å½“ãŸã‚Šåˆ¤å®šç”¨ã€åŠåˆ†ã®å¹…ã¨é«˜ã•
     float halfW;
     float halfH;
 };
-//‘Sƒf[ƒ^‚ğŠÇ—‚·‚é\‘¢‘ÌŒ^
+//å…¨ãƒ‡ãƒ¼ã‚¿ã‚’ç®¡ç†ã™ã‚‹æ§‹é€ ä½“å‹
 struct DATA {
     //----------------------------------------
-    //ƒLƒƒƒ‰ƒNƒ^ƒf[ƒ^
+    //ã‚¹ãƒ†ãƒ¼ãƒˆåˆ¶å¾¡ç”¨ãƒ‡ãƒ¼ã‚¿
+    int TITLE = 0;
+    int PLAY = 1;
+    int RESULT = 2;
+    int state = TITLE;
+    //RESULTã®æ™‚ã€ã‚­ãƒ¼å…¥åŠ›ã‚’ç„¡åŠ¹åŒ–ã™ã‚‹ãƒ•ãƒ¬ãƒ¼ãƒ æ•°
+    int frameRestrictInput;
+    int frameCnt;
+    //----------------------------------------
+    //ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ‡ãƒ¼ã‚¿
     struct CHARA rabit;
     struct CHARA gori;
     struct BULLET ninjin;
     struct BULLET unko;
     int titleImg;
     int backImg;
-    //----------------------------------------
-    //ƒXƒe[ƒg§Œä—pƒf[ƒ^
-    int TITLE = 0;
-    int PLAY = 1;
-    int RESULT = 2;
-    int state = TITLE;
-    //RESULT‚ÌAƒL[“ü—Í‚ğ–³Œø‰»‚·‚éƒtƒŒ[ƒ€”
-    int frameRestrictInput;
-    int frameCnt;
 };
 
-//ŠÖ”‚ÌŒÄ‚Ño‚µ\‘¢
-//EloadImages()
-//Etitle()
+//é–¢æ•°ã®å‘¼ã³å‡ºã—æ§‹é€ 
+//ãƒ»loading()
+//ãƒ»title()
 //    init()
-//Eplay()
+//ãƒ»play()
 //    collision()
 //    draw()
 //      hpGauge()
-//Eresult()
+//ãƒ»result()
 //    draw()
 //      hpGauge();
-void loadImages(struct DATA* d) {
+void loading(struct DATA* d) {
 }
 void title(struct DATA* d){
+    //ä»®ã®å‡¦ç†ï¼ ã™ãã«initã‚’å‘¼ã³å‡ºã—ã¦PLAYã¸
+    init(d);
+    d->state = d->PLAY;
 }
 void init(struct DATA* d){
 }
 void play(struct DATA* d){
 }
 int collision(struct CHARA* c, struct BULLET* b){
+    return 0;
 }
 void draw(struct DATA* d){
 }
@@ -95,88 +127,146 @@ void result(struct DATA* d){
 }
 
 void gmain(){
-    window(300, 480, full);
-    //‘Sƒf[ƒ^
+    window(300, 480);
+    //å…¨ãƒ‡ãƒ¼ã‚¿
     struct DATA d;
-    //‘S‰æ‘œ“Ç‚İ‚İ
-    loadImages(&d);
+    //å…¨ç”»åƒèª­ã¿è¾¼ã¿
+    loading(&d);
     while (notQuit) {
-        //ƒQ[ƒ€ƒXƒe[ƒg§Œä
+        //ã‚²ãƒ¼ãƒ ã‚¹ãƒ†ãƒ¼ãƒˆåˆ¶å¾¡
         if      (d.state == d.TITLE ) { title(&d); }
         else if (d.state == d.PLAY  ) { play(&d); }
         else if (d.state == d.RESULT) { result(&d); }
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #else
+//---------------------------------------------------------
+//ã“ã“ã‹ã‚‰å®Œæˆç‰ˆ
+//---------------------------------------------------------
 #include "libOne.h"
 #include "gmain.h"
 
-//ƒEƒTƒM‚ÆƒSƒŠƒ‰—p\‘¢‘ÌŒ^
+//ã‚¦ã‚µã‚®ã¨ã‚´ãƒªãƒ©ç”¨æ§‹é€ ä½“å‹
 struct CHARA {
-    //Še‰æ‘œ”Ô†
+    //å„ç”»åƒç•ªå·
     int normalImg;
     int damageImg;
     int loseImg;
     int winImg;
-    //Œ»İ‚Ì‰æ‘œ”Ô†
+    //ç¾åœ¨ã®ç”»åƒç•ªå·
     int img;
-    //ˆÊ’u
+    //ä½ç½®
     float px;
     float py;
-    //ˆÚ“®•ûŒüƒxƒNƒgƒ‹
+    //ç§»å‹•æ–¹å‘ãƒ™ã‚¯ãƒˆãƒ«
     float vx;
     float vy;
-    //‘Ì—Í
-    int hp;
-    //‚g‚oƒQ[ƒW—p‰æ‘œ”Ô†
-    int hpGaugeImg;
-    //‚g‚oƒQ[ƒW•\¦ƒIƒtƒZƒbƒgˆÊ’u
-    float hpGaugeOfsY;
-    //“–‚½‚è”»’è—pA”¼•ª‚Ì•‚Æ‚‚³
-    float halfW;
-    float halfH;
-    //’e”­ËƒIƒtƒZƒbƒgˆÊ’u
+    //å¼¾ç™ºå°„ã‚ªãƒ•ã‚»ãƒƒãƒˆä½ç½®
     float bulletOfsY;
-};
-//‚É‚ñ‚¶‚ñ‚Æ‚¤‚ñ‚±—p\‘¢‘ÌŒ^
-struct BULLET {
-    //‰æ‘œ”Ô†
-    int img;
-    //ˆÊ’u
-    float px;
-    float py;
-    //•ûŒüƒxƒNƒgƒ‹
-    float vx;
-    float vy;
-    //‘Ì—ÍHiƒEƒBƒ“ƒhƒE“à‚ğ”ò‚ñ‚Å‚¢‚é‚©‚ğˆÓ–¡‚·‚éj
+    //ä½“åŠ›
     int hp;
-    //“–‚½‚è”»’è—pA”¼•ª‚Ì•‚Æ‚‚³
+    //ï¼¨ï¼°ã‚²ãƒ¼ã‚¸è¡¨ç¤ºã‚ªãƒ•ã‚»ãƒƒãƒˆä½ç½®
+    float hpGaugeOfsY;
+    //å½“ãŸã‚Šåˆ¤å®šç”¨ã€åŠåˆ†ã®å¹…ã¨é«˜ã•
     float halfW;
     float halfH;
 };
-//‘Sƒf[ƒ^‚ğŠÇ—‚·‚é\‘¢‘ÌŒ^
+//ã«ã‚“ã˜ã‚“ã¨ã†ã‚“ã“ç”¨æ§‹é€ ä½“å‹
+struct BULLET {
+    //ç”»åƒç•ªå·
+    int img;
+    //ä½ç½®
+    float px;
+    float py;
+    //æ–¹å‘ãƒ™ã‚¯ãƒˆãƒ«
+    float vx;
+    float vy;
+    //ä½“åŠ›ï¼Ÿï¼ˆã‚¦ã‚£ãƒ³ãƒ‰ã‚¦å†…ã‚’é£›ã‚“ã§ã„ã‚‹ã‹ã‚’æ„å‘³ã™ã‚‹ï¼‰
+    int hp;
+    //å½“ãŸã‚Šåˆ¤å®šç”¨ã€åŠåˆ†ã®å¹…ã¨é«˜ã•
+    float halfW;
+    float halfH;
+};
+//å…¨ãƒ‡ãƒ¼ã‚¿ã‚’ç®¡ç†ã™ã‚‹æ§‹é€ ä½“å‹
 struct DATA {
     //----------------------------------------
-    //ƒLƒƒƒ‰ƒNƒ^ƒf[ƒ^
+    //ã‚¹ãƒ†ãƒ¼ãƒˆåˆ¶å¾¡ç”¨ãƒ‡ãƒ¼ã‚¿
+    int TITLE = 0;
+    int PLAY = 1;
+    int RESULT = 2;
+    int state = TITLE;
+    //RESULTã®æ™‚ã€ã‚­ãƒ¼å…¥åŠ›ã‚’ç„¡åŠ¹åŒ–ã™ã‚‹ãƒ•ãƒ¬ãƒ¼ãƒ æ•°
+    int frameRestrictInput;
+    int frameCnt;
+    //----------------------------------------
+    //ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ‡ãƒ¼ã‚¿
     struct CHARA rabit;
     struct CHARA gori;
     struct BULLET ninjin;
     struct BULLET unko;
     int titleImg;
     int backImg;
-    //----------------------------------------
-    //ƒXƒe[ƒg§Œä—pƒf[ƒ^
-    int TITLE = 0;
-    int PLAY = 1;
-    int RESULT = 2;
-    int state = TITLE;
-    //RESULT‚ÌAƒL[“ü—Í‚ğ–³Œø‰»‚·‚éƒtƒŒ[ƒ€”
-    int frameRestrictInput;
-    int frameCnt;
 };
 
-//ŠÖ”‚ÌŒÄ‚Ño‚µ\‘¢
+//é–¢æ•°ã®å‘¼ã³å‡ºã—æ§‹é€ 
 //title()
 //  init()
 //play()
@@ -186,18 +276,16 @@ struct DATA {
 //result()
 //  draw()
 //    hpGauge();
-void loadImages(struct DATA* d) {
+void loading(struct DATA* d) {
     d->rabit.normalImg = loadImage("assets\\rabit0.png");
     d->rabit.damageImg = loadImage("assets\\rabit1.png");
     d->rabit.loseImg = loadImage("assets\\rabit2.png");
     d->rabit.winImg = loadImage("assets\\rabit3.png");
-    d->rabit.hpGaugeImg = loadImage("assets\\bar.png");
 
     d->gori.normalImg = loadImage("assets\\gorilla0.png");
     d->gori.damageImg = loadImage("assets\\gorilla1.png");
     d->gori.loseImg = loadImage("assets\\gorilla2.png");
     d->gori.winImg = loadImage("assets\\gorilla3.png");
-    d->gori.hpGaugeImg = d->rabit.hpGaugeImg;
     
     d->unko.img = loadImage("assets\\unko0.png");
     
@@ -214,7 +302,7 @@ void title(struct DATA* d) {
     image(d->titleImg, 0, 0);
     if (isTrigger(KEY_SPACE)) {
         init(d);
-        //ƒXƒe[ƒgØ‚è‘Ö‚¦
+        //ã‚¹ãƒ†ãƒ¼ãƒˆåˆ‡ã‚Šæ›¿ãˆ
         d->state = d->PLAY;
     }
 }
@@ -231,9 +319,9 @@ void init(struct DATA* d) {
     d->gori.px = 150.0f;
     d->gori.py = 70.0f;
     d->gori.vx = 4.0f;
+    d->gori.bulletOfsY = 55;
     d->gori.hp = 100;
     d->gori.hpGaugeOfsY = -62;
-    d->gori.bulletOfsY = 55;
     
     d->unko.px = 0.0f;
     d->unko.py = 0.0;
@@ -245,7 +333,7 @@ void init(struct DATA* d) {
     d->ninjin.vy = -5.0f;
     d->ninjin.hp = 0;
     
-    //“–‚½‚è”»’è—pƒf[ƒ^
+    //å½“ãŸã‚Šåˆ¤å®šç”¨ãƒ‡ãƒ¼ã‚¿
     d->rabit.halfW = 35;
     d->rabit.halfH = 55;
     d->gori.halfW = 40;
@@ -259,10 +347,10 @@ void init(struct DATA* d) {
 }
 void play(struct DATA* d) {
     
-    //ƒEƒTƒM‚ğ“®‚©‚·
+    //ã‚¦ã‚µã‚®ã‚’å‹•ã‹ã™
     if (isPress(KEY_A)) { d->rabit.px += -d->rabit.vx; }
     if (isPress(KEY_D)) { d->rabit.px += d->rabit.vx; }
-    //ƒEƒTƒM‚ÌˆÚ“®”ÍˆÍ§ŒÀ
+    //ã‚¦ã‚µã‚®ã®ç§»å‹•ç¯„å›²åˆ¶é™
     if (d->rabit.px < d->rabit.halfW) { 
         d->rabit.px = d->rabit.halfW; 
     }
@@ -270,47 +358,47 @@ void play(struct DATA* d) {
         d->rabit.px = width - d->rabit.halfW;
     }
     
-    //ƒjƒ“ƒWƒ“‚ğ”­Ë‚·‚é
+    //ãƒ‹ãƒ³ã‚¸ãƒ³ã‚’ç™ºå°„ã™ã‚‹
     if (d->ninjin.hp == 0 && isTrigger(KEY_SPACE)) {
-        //”­ËˆÊ’u
+        //ç™ºå°„ä½ç½®
         d->ninjin.px = d->rabit.px;
         d->ninjin.py = d->rabit.py + d->rabit.bulletOfsY;
         d->ninjin.hp = 1;
     }
-    //ƒjƒ“ƒWƒ“‚ğ“®‚©‚·
+    //ãƒ‹ãƒ³ã‚¸ãƒ³ã‚’å‹•ã‹ã™
     if (d->ninjin.hp > 0) {
         d->ninjin.py += d->ninjin.vy;
-        //ƒEƒBƒ“ƒhƒE‚ÌŠO‚Éo‚½
+        //ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®å¤–ã«å‡ºãŸ
         if (d->ninjin.py < -d->ninjin.halfH) {
             d->ninjin.hp = 0;
         }
     }
 
-    //ƒSƒŠƒ‰‚ğ“®‚©‚·
+    //ã‚´ãƒªãƒ©ã‚’å‹•ã‹ã™
     d->gori.px += d->gori.vx;
     if (d->gori.px < d->gori.halfW ||
         d->gori.px > width - d->gori.halfW) { 
-        //ˆÚ“®•ûŒü”½“]
+        //ç§»å‹•æ–¹å‘åè»¢
         d->gori.vx = -d->gori.vx; 
     }
 
-    //ƒEƒ“ƒR‚·‚é
+    //ã‚¦ãƒ³ã‚³ã™ã‚‹
     if (d->unko.hp == 0) {
-        //”­ËˆÊ’u
+        //ç™ºå°„ä½ç½®
         d->unko.px = d->gori.px;
         d->unko.py = d->gori.py + d->gori.bulletOfsY;
         d->unko.hp = 1;
     }
-    //ƒEƒ“ƒR‚ğ“®‚©‚·
+    //ã‚¦ãƒ³ã‚³ã‚’å‹•ã‹ã™
     if (d->unko.hp > 0) {
         d->unko.py += d->unko.vy;
-        //ƒEƒBƒ“ƒhƒE‚ÌŠO‚Éo‚½
+        //ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®å¤–ã«å‡ºãŸ
         if (d->unko.py > height + d->unko.halfH) {
             d->unko.hp = 0;
         }
     }
 
-    //“–‚½‚è”»’èEƒEƒTƒM‚Æ‚¤‚ñ‚±
+    //å½“ãŸã‚Šåˆ¤å®šãƒ»ã‚¦ã‚µã‚®ã¨ã†ã‚“ã“
     if (collision(&d->rabit, &d->unko)) {
         d->rabit.img = d->rabit.damageImg;
         d->rabit.hp--;
@@ -318,7 +406,7 @@ void play(struct DATA* d) {
     else {
         d->rabit.img = d->rabit.normalImg;
     }
-    //“–‚½‚è”»’èEƒSƒŠƒ‰‚Æ‚É‚ñ‚¶‚ñ
+    //å½“ãŸã‚Šåˆ¤å®šãƒ»ã‚´ãƒªãƒ©ã¨ã«ã‚“ã˜ã‚“
     if (collision(&d->gori, &d->ninjin)) {
         d->gori.img = d->gori.damageImg;
         d->gori.hp--;
@@ -327,28 +415,28 @@ void play(struct DATA* d) {
         d->gori.img = d->gori.normalImg;
     }
 
-    //•`‰æ
+    //æç”»
     draw(d);
 
-    //Ÿ•‰‚ª‚Â‚¢‚½
+    //å‹è² ãŒã¤ã„ãŸ
     if (d->rabit.hp <= 0 || d->gori.hp <= 0) {
-        //Ÿ‚¿•‰‚¯‰æ‘œØ‚è‘Ö‚¦
-        if (d->gori.hp > 0) {//ƒSƒŠƒ‰‚ªŸ‚Á‚½
+        //å‹ã¡è² ã‘ç”»åƒåˆ‡ã‚Šæ›¿ãˆ
+        if (d->gori.hp > 0) {//ã‚´ãƒªãƒ©ãŒå‹ã£ãŸ
             d->gori.img = d->gori.winImg;
             d->rabit.img = d->rabit.loseImg;
         }
-        else {//ƒ‰ƒrƒbƒg‚ªŸ‚Á‚½
+        else {//ãƒ©ãƒ“ãƒƒãƒˆãŒå‹ã£ãŸ
             d->rabit.img = d->rabit.winImg;
             d->gori.img = d->gori.loseImg;
         }
-        //ƒXƒe[ƒgØ‚è‘Ö‚¦
+        //ã‚¹ãƒ†ãƒ¼ãƒˆåˆ‡ã‚Šæ›¿ãˆ
         d->frameCnt = d->frameRestrictInput;
         d->state = d->RESULT;
     }
 
 }
 int collision(struct CHARA* c, struct BULLET* b) {
-    //‹éŒ`‚Æ‹éŒ`‚Ì“–‚½‚è”»’è
+    //çŸ©å½¢ã¨çŸ©å½¢ã®å½“ãŸã‚Šåˆ¤å®š
     if (b->hp > 0) {
         float cRight = c->px + c->halfW;
         float cLeft = c->px - c->halfW;
@@ -360,11 +448,11 @@ int collision(struct CHARA* c, struct BULLET* b) {
         float bBottom = b->py + b->halfH;
         if (cRight < bLeft || bRight < cLeft ||
             bBottom < cTop || cBottom < bTop ) {
-            //G‚ê‚Ä‚¢‚È‚¢
+            //è§¦ã‚Œã¦ã„ãªã„
             return 0;
         }
         else {
-            //G‚ê‚Ä‚¢‚é
+            //è§¦ã‚Œã¦ã„ã‚‹
             return 1;
         }
     }
@@ -372,26 +460,25 @@ int collision(struct CHARA* c, struct BULLET* b) {
 }
 void draw(struct DATA* d) {
     clear();
-    imageColor(255);
-    //”wŒi
+    //èƒŒæ™¯
     rectMode(CORNER);
     image(d->backImg, 0, 0);
+    //ã‚­ãƒ£ãƒ©
     rectMode(CENTER);
-    //ƒLƒƒƒ‰
     image(d->rabit.img, d->rabit.px, d->rabit.py);
     image(d->gori.img, d->gori.px, d->gori.py);
-    //’e
+    //å¼¾
     if (d->ninjin.hp > 0) {
         image(d->ninjin.img, d->ninjin.px, d->ninjin.py);
     }
     if (d->unko.hp > 0) {
         image(d->unko.img, d->unko.px, d->unko.py);
     }
-    //‚g‚oƒQ[ƒW
+    //ï¼¨ï¼°ã‚²ãƒ¼ã‚¸
     hpGauge(&d->gori);
     hpGauge(&d->rabit);
 #if _DEBUG
-    //“–‚½‚è”»’èƒGƒŠƒA•\¦
+    //å½“ãŸã‚Šåˆ¤å®šã‚¨ãƒªã‚¢è¡¨ç¤º
     fill(255, 255, 255, 128);
     rect(d->rabit.px, d->rabit.py, d->rabit.halfW * 2, d->rabit.halfH * 2);
     rect(d->unko.px, d->unko.py, d->unko.halfW * 2, d->unko.halfH * 2);
@@ -400,20 +487,17 @@ void draw(struct DATA* d) {
 #endif
 }
 void hpGauge(struct CHARA* c) {
-    float px = c->px - c->hp / 2;
-    float py = c->py + c->hpGaugeOfsY;
+    strokeWeight(0);
     if (c->hp > 15) {
-        imageColor(0, 255, 0);
+        fill(0, 255, 0);
     }
     else {
-        imageColor(255, 0, 0);
+        fill(255, 0, 0);
     }
-    for (int i = 0; i < c->hp; i++) {
-        image(c->hpGaugeImg, px + i, py);
-    }
+    rect(c->px, c->py + c->hpGaugeOfsY, c->hp, 5);
 }
 void result(struct DATA* d) {
-    //ƒjƒ“ƒWƒ“‚ÆƒEƒ“ƒR‚ğ‰æ–ÊŠO‚Ü‚ÅˆÚ“®
+    //ãƒ‹ãƒ³ã‚¸ãƒ³ã¨ã‚¦ãƒ³ã‚³ã‚’ç”»é¢å¤–ã¾ã§ç§»å‹•
     if (d->ninjin.hp > 0) {
         d->ninjin.py += d->ninjin.vy;
         if (d->ninjin.py < -d->ninjin.halfH) {
@@ -426,15 +510,15 @@ void result(struct DATA* d) {
             d->unko.hp = 0;
         }
     }
-    //•`‰æ
+    //æç”»
     draw(d);
 
-    //ƒŠƒXƒ^[ƒg(”ƒtƒŒ[ƒ€ƒ‹[ƒv‚µ‚È‚¢‚ÆƒXƒy[ƒXƒL[‚ğ‰Ÿ‚¹‚È‚¢)
+    //ãƒªã‚¹ã‚¿ãƒ¼ãƒˆ(æ•°ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ«ãƒ¼ãƒ—ã—ãªã„ã¨ã‚¹ãƒšãƒ¼ã‚¹ã‚­ãƒ¼ã‚’æŠ¼ã›ãªã„)
     if (d->frameCnt > 0) {
         d->frameCnt--;
     }
     else {
-        text("Space‚Åƒ^ƒCƒgƒ‹‚É–ß‚è‚Ü‚·", 25, height);
+        text("Spaceã§ã‚¿ã‚¤ãƒˆãƒ«ã«æˆ»ã‚Šã¾ã™", 25, height);
         if (isTrigger(KEY_SPACE)) {
             d->state = d->TITLE;
         }
@@ -442,14 +526,14 @@ void result(struct DATA* d) {
 }
 
 void gmain() {
-    window(300, 480, full);
-    //‘Sƒf[ƒ^
+    window(300, 480);
+    //å…¨ãƒ‡ãƒ¼ã‚¿
     struct DATA d;
-    //‘S‰æ‘œ“Ç‚İ‚İ
-    loadImages(&d);
+    //å…¨ç”»åƒèª­ã¿è¾¼ã¿
+    loading(&d);
     ShowCursor(false);
     while (notQuit) {
-        //ƒQ[ƒ€ƒXƒe[ƒg§Œä
+        //ã‚²ãƒ¼ãƒ ã‚¹ãƒ†ãƒ¼ãƒˆåˆ¶å¾¡
         if      (d.state == d.TITLE ) { title(&d); }
         else if (d.state == d.PLAY  ) { play(&d); }
         else if (d.state == d.RESULT) { result(&d); }
