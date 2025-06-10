@@ -152,7 +152,15 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="background.cpp" />
+    <ClCompile Include="collision.cpp" />
     <ClCompile Include="gmain.cpp" />
+    <ClCompile Include="gori.cpp" />
+    <ClCompile Include="hpGauge.cpp" />
+    <ClCompile Include="ninjin.cpp" />
+    <ClCompile Include="rabit.cpp" />
+    <ClCompile Include="title.cpp" />
+    <ClCompile Include="unko.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />
@@ -161,7 +169,16 @@
     <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="gmain.h" />
+    <ClInclude Include="background.h" />
+    <ClInclude Include="BULLET.h" />
+    <ClInclude Include="CHARA.h" />
+    <ClInclude Include="collision.h" />
+    <ClInclude Include="gori.h" />
+    <ClInclude Include="hpGauge.h" />
+    <ClInclude Include="ninjin.h" />
+    <ClInclude Include="rabit.h" />
+    <ClInclude Include="title.h" />
+    <ClInclude Include="unko.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
